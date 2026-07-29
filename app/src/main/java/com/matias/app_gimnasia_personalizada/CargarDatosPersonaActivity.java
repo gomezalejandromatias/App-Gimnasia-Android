@@ -12,9 +12,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.matias.app_gimnasia_personalizada.Api.ApiService;
+import com.matias.app_gimnasia_personalizada.Api.PersonaRepository;
 import com.matias.app_gimnasia_personalizada.dominio.Persona;
 
-public class CargarDatosPersonaActivity<string> extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CargarDatosPersonaActivity extends AppCompatActivity {
 
     private EditText etNombre;
     private EditText etEdad;
@@ -23,6 +29,7 @@ public class CargarDatosPersonaActivity<string> extends AppCompatActivity {
     private EditText etObjetivo;
     private EditText etEnfermedades;
     private EditText etMolestias;
+    PersonaRepository personarepository = new PersonaRepository();
 
 
     @Override
@@ -38,7 +45,6 @@ public class CargarDatosPersonaActivity<string> extends AppCompatActivity {
         etObjetivo = findViewById(R.id.etObjetivo);
         etEnfermedades = findViewById(R.id.etEnfermedades);
         etMolestias = findViewById(R.id.etMolestias);
-
 
 
 
@@ -64,6 +70,20 @@ public class CargarDatosPersonaActivity<string> extends AppCompatActivity {
         persona.setObjetivo(Objetivo);
         persona.setEnfermedades(Enfermedades);
         persona.setMolestias(Molestias);
+
+        personarepository.agregarPersona(persona).enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                // La API respondió.
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable error) {
+                // No se pudo conectar con la API.
+            }
+        });
+
 
         Intent intent =  new Intent(this, MostarDatosPersonaActivity.class);
 

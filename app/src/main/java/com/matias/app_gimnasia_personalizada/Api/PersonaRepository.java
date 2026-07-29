@@ -24,6 +24,13 @@ public class PersonaRepository {
 
     }
 
+    public Call<Void> agregarPersona(Persona persona){
+
+
+        return  apiService.agregarPersona(persona);
+
+    }
+
 
 
 }

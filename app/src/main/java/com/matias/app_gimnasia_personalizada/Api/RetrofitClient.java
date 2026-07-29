@@ -8,7 +8,6 @@ public class RetrofitClient {
 
     private static final String BASE_URL =
             "http://localhost:53000/api/";
-
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofit() {
