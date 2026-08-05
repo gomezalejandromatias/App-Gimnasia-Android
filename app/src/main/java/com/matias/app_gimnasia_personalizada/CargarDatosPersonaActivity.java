@@ -84,7 +84,7 @@ public class CargarDatosPersonaActivity extends AppCompatActivity {
             }
         });
 
-
+       /*
         Intent intent =  new Intent(this, MostarDatosPersonaActivity.class);
 
         intent.putExtra("Nombre", Nombre);
@@ -96,7 +96,7 @@ public class CargarDatosPersonaActivity extends AppCompatActivity {
         intent.putExtra("Molestias", Molestias);
 
         startActivity(intent);
-
+           */
 
 
 
